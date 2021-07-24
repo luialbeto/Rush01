@@ -1,7 +1,6 @@
 #include "t_matrix.h"
 
 void	ft_putstr(char *str, int size);
-
 void	ft_putchar(char c);
 
 void	ft_print(t_matrix *m)

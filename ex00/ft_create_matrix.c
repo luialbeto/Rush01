@@ -1,26 +1,26 @@
 #include <stdlib.h>
 #include "t_matrix.h"
 
-t_matrix ft_create_matrix(int row, int col)
+t_matrix ft_create_matrix(int rows, int cols)
 {
-	t_matrix matrix;
-	int i;
-	int j;
+	t_matrix	matrix;
+	int			i;
+	int			j;
 
 	i = 0;
-	matrix.rows = row;
-	matrix.cols = col;
-	matrix.values = (int **) malloc(row * sizeof(int *));
-	while(i < row)
+	matrix.rows = rows;
+	matrix.cols = cols;
+	matrix.values = (int **) malloc(rows * sizeof(int *));
+	while(i < rows)
 	{
-		matrix.values[i] = (int *) malloc(col * sizeof(int));
+		matrix.values[i] = (int *) malloc(cols * sizeof(int));
 		j = 0;
-		while(j < col)
+		while (j < cols)
 		{
-			matrix.values[i][j] = i + j;
+			matrix.values[i][j] = 0;
 			j++;
 		}
 		i++;
 	}
-	return(matrix);
+	return (matrix);
 }
