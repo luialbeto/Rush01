@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include "t_matrix.h"
+#include "structs.h"
 
-void	ft_free(t_matrix *m)
+void	ft_free_matrix(t_matrix *m)
 {
 	int	i;
 

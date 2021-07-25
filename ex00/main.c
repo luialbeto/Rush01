@@ -1,32 +1,31 @@
 #include <stdio.h>
 
-#include "t_args.h"
-#include "t_matrix.h"
+#include "structs.h"
 
-t_args		ft_get_args(char *str);
+t_input		ft_get_input(char *str);
 t_matrix	ft_create_matrix(int row, int col);
-int			ft_rush(t_args *args, t_matrix *m);
+int			ft_solve_rush(t_input *input, t_matrix *m);
 void		ft_print(t_matrix *m);
 void		ft_putstr(char *str, int size);
-void		ft_free(t_matrix *m);
+void		ft_free_matrix(t_matrix *m);
 
 int	main(int argc, char **argv)
 {
-	t_args		args;
+	t_input		input;
 	t_matrix	matrix;
-	int			is_error;
+	int			is_success;
 
-	is_error = 0;
+	is_success = 0;
 	if (argc > 1)
 	{
-		args = ft_get_args(argv[1]);
+		input = ft_get_input(argv[1]);
 		matrix = ft_create_matrix(4, 4);
-		is_error = ft_rush(&args, &matrix);
-		if (!is_error)
+		is_success = ft_solve_rush(&input, &matrix);
+		if (is_success)
 			ft_print(&matrix);
-		ft_free(&matrix);
+		ft_free_matrix(&matrix);
 	}
-	if (argc <= 1 || is_error)
+	if (argc <= 1 || !is_success)
 		ft_putstr("Error\n", 6);
 	return (0);
 }

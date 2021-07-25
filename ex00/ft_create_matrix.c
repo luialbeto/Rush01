@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "t_matrix.h"
+#include "structs.h"
 
 t_matrix ft_create_matrix(int rows, int cols)
 {
