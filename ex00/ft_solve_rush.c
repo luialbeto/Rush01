@@ -18,13 +18,12 @@ int	ft_solve_rush(t_input *i, t_matrix *m)
 	t_pos	p;
 	int		val;
 
-
-	if (!ft_find_unassigned_location(m, &p) &&
-		ft_matches_input(i, m, &p))
-		return (1);
-
-	ft_print(m);
-	printf("\n\n");
+	if (!ft_find_unassigned_location(m, &p))
+	{
+		p.row = 0;
+		p.col = 0;
+		return (ft_matches_input(i, m, &p));
+	}
 
 	val = 1;
 	while (val <= m->rows)
@@ -45,10 +44,10 @@ int	ft_solve_rush(t_input *i, t_matrix *m)
 
 int	ft_matches_input(t_input *i, t_matrix *m, t_pos *p)
 {
-	return ft_matches_up(i->up, m, p->col) &&
+	return (ft_matches_up(i->up, m, p->col) &&
 			ft_matches_down(i->down, m, p->col) &&
 			ft_matches_left(i->left, m, p->row) &&
-			ft_matches_right(i->right, m, p->row);
+			ft_matches_right(i->right, m, p->row));
 }
 
 int	ft_matches_up(int *up, t_matrix *m, int col)
