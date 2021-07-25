@@ -3,15 +3,15 @@
 #include "structs.h"
 
 void	ft_print(t_matrix *m);
-int	ft_find_unassigned_location(t_matrix *m, t_pos *p);
-int	ft_used_in_col(t_matrix *m, int col, int val);
-int	ft_used_in_row(t_matrix *m, int row, int val);
-int ft_is_safe(t_matrix *m, t_pos *p, int val);
-int	ft_matches_up(int *up, t_matrix *m, int col);
-int	ft_matches_down(int *down, t_matrix *m, int col);
-int	ft_matches_left(int *left, t_matrix *m, int row);
-int	ft_matches_right(int *right, t_matrix *m, int row);
-int	ft_matches_input(t_input *i, t_matrix *m, t_pos *p);
+int		ft_find_unassigned_location(t_matrix *m, t_pos *p);
+int		ft_used_in_col(t_matrix *m, int col, int val);
+int		ft_used_in_row(t_matrix *m, int row, int val);
+int		ft_is_safe(t_matrix *m, t_pos *p, int val);
+int		ft_matches_up(int *up, t_matrix *m, int col);
+int		ft_matches_down(int *down, t_matrix *m, int col);
+int		ft_matches_left(int *left, t_matrix *m, int row);
+int		ft_matches_right(int *right, t_matrix *m, int row);
+int		ft_matches_input(t_input *i, t_matrix *m, t_pos *p);
 
 int	ft_solve_rush(t_input *i, t_matrix *m)
 {
@@ -24,17 +24,14 @@ int	ft_solve_rush(t_input *i, t_matrix *m)
 		p.col = 0;
 		return (ft_matches_input(i, m, &p));
 	}
-
 	val = 1;
 	while (val <= m->rows)
 	{
 		if (ft_is_safe(m, &p, val))
 		{
 			m->values[p.row][p.col] = val;
-
 			if (ft_solve_rush(i, m))
 				return (1);
-
 			m->values[p.row][p.col] = 0;
 		}
 		val++;
@@ -44,10 +41,10 @@ int	ft_solve_rush(t_input *i, t_matrix *m)
 
 int	ft_matches_input(t_input *i, t_matrix *m, t_pos *p)
 {
-	return (ft_matches_up(i->up, m, p->col) &&
-			ft_matches_down(i->down, m, p->col) &&
-			ft_matches_left(i->left, m, p->row) &&
-			ft_matches_right(i->right, m, p->row));
+	return (ft_matches_up(i->up, m, p->col)
+		&& ft_matches_down(i->down, m, p->col)
+		&& ft_matches_left(i->left, m, p->row)
+		&& ft_matches_right(i->right, m, p->row));
 }
 
 int	ft_matches_up(int *up, t_matrix *m, int col)
@@ -64,7 +61,7 @@ int	ft_matches_up(int *up, t_matrix *m, int col)
 			count--;
 		row++;
 	}
-	return count == up[col];
+	return (count == up[col]);
 }
 
 int	ft_matches_down(int *down, t_matrix *m, int col)
@@ -81,7 +78,7 @@ int	ft_matches_down(int *down, t_matrix *m, int col)
 			count--;
 		row++;
 	}
-	return count == down[col];
+	return (count == down[col]);
 }
 
 int	ft_matches_left(int *left, t_matrix *m, int row)
@@ -98,7 +95,7 @@ int	ft_matches_left(int *left, t_matrix *m, int row)
 			count--;
 		col++;
 	}
-	return count == left[row];
+	return (count == left[row]);
 }
 
 int	ft_matches_right(int *right, t_matrix *m, int row)
@@ -115,19 +112,19 @@ int	ft_matches_right(int *right, t_matrix *m, int row)
 			count--;
 		col++;
 	}
-	return count == right[row];
+	return (count == right[row]);
 }
 
-int ft_is_safe(t_matrix *m, t_pos *p, int val)
+int	ft_is_safe(t_matrix *m, t_pos *p, int val)
 {
-	return !ft_used_in_row(m, p->row, val) &&
-			!ft_used_in_col(m, p->col, val) &&
-			m->values[p->row][p->col] == 0;
+	return (!ft_used_in_row(m, p->row, val)
+		&& !ft_used_in_col(m, p->col, val)
+		&& m->values[p->row][p->col] == 0);
 }
 
 int	ft_used_in_row(t_matrix *m, int row, int val)
 {
-	int col;
+	int	col;
 
 	col = 0;
 	while (col < m->cols)
@@ -141,7 +138,7 @@ int	ft_used_in_row(t_matrix *m, int row, int val)
 
 int	ft_used_in_col(t_matrix *m, int col, int val)
 {
-	int row;
+	int	row;
 
 	row = 0;
 	while (row < m->rows)

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "structs.h"
 
-t_matrix ft_create_matrix(int rows, int cols)
+t_matrix	ft_create_matrix(int rows, int cols)
 {
 	t_matrix	matrix;
 	int			i;
@@ -11,7 +11,7 @@ t_matrix ft_create_matrix(int rows, int cols)
 	matrix.rows = rows;
 	matrix.cols = cols;
 	matrix.values = (int **) malloc(rows * sizeof(int *));
-	while(i < rows)
+	while (i < rows)
 	{
 		matrix.values[i] = (int *) malloc(cols * sizeof(int));
 		j = 0;

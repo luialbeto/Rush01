@@ -5,14 +5,14 @@ void	ft_putchar(char c);
 
 void	ft_print(t_matrix *m)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while(i < m->rows)
+	while (i < m->rows)
 	{
 		j = 0;
-		while(j < m->cols)
+		while (j < m->cols)
 		{
 			ft_putchar(m->values[i][j] + '0');
 			if (j < m->cols - 1)
