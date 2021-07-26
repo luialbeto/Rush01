@@ -20,7 +20,7 @@ int	main(int argc, char **argv) // quantidade e valores
 	{
 		input = ft_get_input(argv[1]); // chama a função ft_get_input, passando o valor 1 do vetor argv
 		matrix = ft_create_matrix(4, 4); // transforma valor em int
-		is_success = ft_solve_rush(&input, &matrix); 
+		is_success = ft_solve_rush(&input, &matrix); // lógica do prgrama passando input e a matrix criada, retorna 1 ou 0
 		if (is_success)
 			ft_print(&matrix);
 		ft_free_matrix(&matrix);
