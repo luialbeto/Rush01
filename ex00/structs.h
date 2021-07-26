@@ -1,3 +1,6 @@
+#ifndef STRUCTS_H
+# define STRUCTS_H
+
 typedef struct s_input
 {
 	int	*up;
@@ -18,3 +21,5 @@ typedef struct s_pos
 	int	row;
 	int	col;
 }				t_pos;
+
+#endif
