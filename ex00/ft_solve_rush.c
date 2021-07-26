@@ -1,4 +1,4 @@
-#include "structs.h"
+#include "structs.h" // adaptamos uma estrutura de sudoku
 
 void	ft_print(t_matrix *m);
 int		ft_find_unassigned_location(t_matrix *m, t_pos *p);
@@ -11,7 +11,7 @@ int	ft_solve_rush(t_input *i, t_matrix *m)
 	t_pos	p;
 	int		val;
 
-	if (!ft_find_unassigned_location(m, &p))
+	if (!ft_find_unassigned_location(m, &p)) // se não tiver mais 0, retorna validação, quebrou o código
 		return (ft_validate(i, m));
 	val = 1;
 	while (val <= m->rows)
